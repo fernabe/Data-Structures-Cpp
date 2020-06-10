@@ -16,6 +16,7 @@ class List
         Node *head;
         void InsertNode();
         void InsertFirst();
+        void DeleteNodeByValue();
         void PrintList();
         bool EmptyList();
     

@@ -14,8 +14,9 @@ void List::ShowMenu()
         std::cout << "\tEscoge una opción" << std::endl;
         std::cout << "\t1 - Insert Element at the end of list" << std::endl;
         std::cout << "\t2 - Insert Element at first position" << std::endl;
-        std::cout << "\t3 - Show List" << std::endl;
-        std::cout << "\t4 - Exit" << std::endl;
+        std::cout << "\t3 - Delete item by value" << std::endl;
+        std::cout << "\t4 - Show List" << std::endl;
+        std::cout << "\t5 - Exit" << std::endl;
 
         std::cin >> option;
 
@@ -26,8 +27,10 @@ void List::ShowMenu()
         else if(option == 2)
             InsertFirst();
         else if(option == 3)
+            DeleteNodeByValue();
+        else if(option == 4)
             PrintList();
-        else if( option == 4)
+        else if( option == 5)
         {
             this->exit = true;
             std::cout << "Exit Program" << std::endl;
@@ -64,6 +67,41 @@ void List::InsertNode()
     std::cout << "Inserted Item: " << value << std::endl;
 }
 
+void List::DeleteNodeByValue()
+{
+    Node *current, *previous; 
+
+    if( head == nullptr)
+    {
+        std::cout << "The list is empty" << std::endl;
+        return;
+    }
+
+    std::cout << "Insert the value to delete: ";
+    int value;
+    std::cin >> value;
+
+    if( head->GetData() == value )
+    {
+        Node *current = head;
+        head = head->GetNext();
+        delete current;
+        return;
+    }
+
+    current = head;
+    previous = head;
+
+    while( current->GetNext() != nullptr && current->GetData() != value)
+    {
+        previous = current;
+        current = current->GetNext();
+    } 
+
+        previous->SetNext(current->GetNext());
+        delete current;
+
+}
 void List::InsertFirst()
 {
     std::random_device seeder;
