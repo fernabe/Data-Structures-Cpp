@@ -1,7 +1,7 @@
 # C++ Data Structures
 
 In this repository I will be creating different data structures for classroom practices.
-At the moment it only contains the linked list. gis
+At the moment it only contains the linked list.
 
 
 ## Dependencies for Running Locally
