@@ -13,8 +13,9 @@ class List
         ~List(){};
         void ShowMenu();
     private:
-        Node * head;
+        Node *head;
         void InsertNode();
+        void InsertFirst();
         void PrintList();
         bool EmptyList();
     

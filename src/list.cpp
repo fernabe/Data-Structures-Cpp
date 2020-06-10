@@ -12,9 +12,10 @@ void List::ShowMenu()
     {
         std::cout << "\n\n===========================\n\n";
         std::cout << "\tEscoge una opción" << std::endl;
-        std::cout << "\t1 - Insert Element" << std::endl;
-        std::cout << "\t2 - Show List" << std::endl;
-        std::cout << "\t3 - Exit" << std::endl;
+        std::cout << "\t1 - Insert Element at the end of list" << std::endl;
+        std::cout << "\t2 - Insert Element at first position" << std::endl;
+        std::cout << "\t3 - Show List" << std::endl;
+        std::cout << "\t4 - Exit" << std::endl;
 
         std::cin >> option;
 
@@ -23,8 +24,10 @@ void List::ShowMenu()
         if( option == 1)
             InsertNode();
         else if(option == 2)
+            InsertFirst();
+        else if(option == 3)
             PrintList();
-        else if( option == 3)
+        else if( option == 4)
         {
             this->exit = true;
             std::cout << "Exit Program" << std::endl;
@@ -61,6 +64,29 @@ void List::InsertNode()
     std::cout << "Inserted Item: " << value << std::endl;
 }
 
+void List::InsertFirst()
+{
+    std::random_device seeder;
+    std::mt19937 engine(seeder());
+    std::uniform_int_distribution<int> dist(0, 100);
+
+    int value = dist(engine);
+
+    Node *n = new Node;
+    n->SetData(value); 
+    n->SetNext(nullptr);
+
+    if( head == nullptr )
+    {
+        head = n;
+    }
+    else
+    {
+        n->SetNext(head);
+        head = n;
+    }
+    std::cout << "Inserted Item: " << value << std::endl;
+}
 
 bool List::EmptyList()
 {
@@ -83,7 +109,7 @@ void List::PrintList()
         current = current->GetNext();
     }
 
-    std::cout << "Next node address: " << current->GetNext() << std::endl;
+    std::cout << "Next node address: 3" << current->GetNext() << std::endl;
     std::cout << "Data: " << current->GetData() << std::endl;
     std::cout << "----------" << std::endl;
 
