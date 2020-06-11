@@ -97,10 +97,14 @@ void List::DeleteNodeByValue()
         previous = current;
         current = current->GetNext();
     } 
-
-        previous->SetNext(current->GetNext());
-        delete current;
-
+        if(current->GetData() == value)
+        {
+            previous->SetNext(current->GetNext());
+            delete current;
+            return;
+        }
+    
+    std::cout << "Not found data in the list" << std::endl;
 }
 void List::InsertFirst()
 {
