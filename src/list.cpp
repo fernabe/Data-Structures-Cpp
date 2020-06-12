@@ -141,6 +141,12 @@ bool List::EmptyList()
 
 void List::PrintList()
 {
+
+    if( EmptyList() )
+    {
+        std::cout << "The list is empty" << std::endl;
+        return;
+    }
     std::cout << "\n\nPrint List\n" << std::endl;
     Node *current = head;
     while( current->GetNext() != nullptr)
